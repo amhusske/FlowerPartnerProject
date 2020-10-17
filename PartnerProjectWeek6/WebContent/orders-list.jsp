@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Past Orders</title>
+<title>Customer Orders</title>
 </head>
 <body>
 
@@ -15,9 +15,10 @@
 	<table>
 		<c:forEach items="${requestScope.allOrders}" var="currentorder">
 		<tr>
-			<td><input type="radio" name="id" value="${currentorder.id}"></td>
-			<td>${currentorder.drink}</td><td>|| ${currentorder.size}</td>
-			<td colspan="3">|| Customer:${currentorder.customer.customerName}</td>
+			<td><input type="radio" name="id" value="${currentitem.id}"></td>
+			<td>${currentitem.orderName}</td><td>|| ${currentitem.orderDate}</td>
+			<td>|| ${currentitem.quantity}</td><td>|| ${currentitem.price}</td>
+			<td colspan="3">|| Customer:${currentitem.customers.customerName}</td>
 		</c:forEach>
 	</table>
 	<input type="submit" value="edit" name="orderAction">
