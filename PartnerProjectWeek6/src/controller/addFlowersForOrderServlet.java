@@ -1,28 +1,23 @@
-
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Order;
-
 /**
- * Servlet implementation class ViewAllOrdersServlet
+ * Servlet implementation class addFlowersForOrderServlet
  */
-@WebServlet("/viewAllOrdersServlet")
-public class ViewAllOrdersServlet extends HttpServlet {
+@WebServlet("/addFlowersForOrderServlet")
+public class addFlowersForOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllOrdersServlet() {
+    public addFlowersForOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +27,17 @@ public class ViewAllOrdersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		OrderHelper oh = new OrderHelper();
-		List<Order> abc = oh.showAllOrders();
-		request.setAttribute("allOrders", abc);
+FlowerHelper fh = new FlowerHelper();
 		
-		if(abc.isEmpty()) {
-			request.setAttribute("allOrders", " ");
+		request.setAttribute("allFlowers", fh.showAllFlowers());
+		
+		String path = "/addOrder.jsp";
+		
+		if(fh.showAllFlowers().isEmpty()) {
+			path = "/index.html";
 		}
 		
-		getServletContext().getRequestDispatcher("/orders-list.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 	/**

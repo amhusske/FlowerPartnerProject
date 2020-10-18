@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +30,23 @@
 			<div class="col-7">
 				<input type ="text" name = "orderName">
 			</div>
-			<br />
 		</div>
 		
 		<div class="form-group">
 			<div class="col-5">
-				<label for="custID">Customer ID: </label>
+				<label for="custName">Customer Name: </label>
 			</div>
 			<div class="col-7">
-				<input type = "number" name = "custID">
+				<input type = "text" name = "custName">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-5">
+				<label for="price">Price: </label>
+			</div>
+			<div class="col-7">
+				<input type = "number" name = "price">
 			</div>
 		</div>
 		
@@ -49,7 +60,12 @@
 			<br />
 		</div>
 		
-		
+		Available Flowers:<br />
+
+		<select name="allFlowersToAdd" multiple size="6">
+		<c:forEach items="${requestScope.allFlowers}" var="currentflower">
+   		<option value = "${currentflower.id}">${currentflower.flowerName} | ${currentflower.colors}</option>
+		</c:forEach>
 		
 		<input type = "submit" value="Add Order" class="btn btn-primary">
 	</form>
