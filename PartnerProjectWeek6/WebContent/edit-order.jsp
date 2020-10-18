@@ -11,9 +11,19 @@
 <body>
 	
 	<form action="editOrderServlet" method="post">
-		Drink: <input type="text" name="drink" value= "${orderToEdit.drink}">
-		Size: <input type="text" name="size" value= "${orderToEdit.size}">
+		Order Name: <input type="text" name="orderName" value= "${orderToEdit.orderName}">
 		Customer Name: <input type="text" name="customerName" value= "${orderToEdit.customer.customerName}">
+		Price : <input type="number" name="price" value= "${orderToEdit.price}">
+		Quantity : <input type="number" name="quantity" value= "${orderToEdit.quantity}">
+
+		Available Flowers:<br />
+
+		<select name="allFlowersToAdd" multiple size="6">
+		<c:forEach items="${requestScope.allFlowers}" var="currentflower">
+   		<option value = "${currentflower.id}">${currentflower.flowerName} | ${currentflower.colors}</option>
+		</c:forEach>
+		
+		<br />
 		<input type="hidden" name="id" value="${orderToEdit.id}">
 		<input type="submit" value="Save Edits">
 	</form>
