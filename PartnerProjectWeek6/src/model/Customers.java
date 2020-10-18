@@ -51,6 +51,6 @@ public class Customers {
 
 	@Override
 	public String toString() {
-		return "Customers [id=" + id + ", customerName=" + customerName + "]";
+		return "Customer Name: " + customerName;
 	}
 }
