@@ -24,7 +24,7 @@
 		</c:forEach>
 		
 		<br />
-		<input type="hidden" name="id" value="${orderToEdit.id}">
+		<input type="hidden" name="id" value="${orderToEdit.orderID}">
 		<input type="submit" value="Save Edits">
 	</form>
 </body>
