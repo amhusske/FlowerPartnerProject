@@ -44,9 +44,10 @@
 	</c:forEach>
 	</table>
 	
-	<input type="submit" value="edit" name="doThisToOrder">
-	<input type="submit" value="delete" name="doThisToOrder">
-	<input type="submit" value="add" name="doThisToOrder">
+	<br>
+	<input type="submit" value="edit" name="doThisToOrder" class="btn btn-warning">
+	<input type="submit" value="delete" name="doThisToOrder" class="btn btn-danger">
+	<input type="submit" value="add" name="doThisToOrder"  class="btn btn-success">
 	</form>
 	
 		<!-- Scripts -->

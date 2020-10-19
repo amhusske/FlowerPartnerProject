@@ -59,15 +59,26 @@
 			</div>
 			<br />
 		</div>
-		
+		<div class="ml-5">
 		Available Flowers:<br />
-
-		<select name="allFlowersToAdd" multiple size="6">
-		<c:forEach items="${requestScope.allFlowers}" var="currentflower">
-   		<option value = "${currentflower.id}">${currentflower.flowerName} | ${currentflower.colors}</option>
-		</c:forEach>
+		
+			<select name="allFlowersToAdd" multiple size="6">
+			<c:forEach items="${requestScope.allFlowers}" var="currentflower">
+   			<option value = "${currentflower.id}">${currentflower.flowerName} | ${currentflower.colors}</option>
+			</c:forEach>
+			</select>
+			</div>
+		<br>
+		<br>
+		<div class="w-100"></div>
+		
 		
 		<input type = "submit" value="Add Order" class="btn btn-primary">
 	</form>
+	<br>
+	<br>
+	<button type="button" class="btn btn-default btn-light" onclick="location.href='index.html';">Add a flower instead</button>
+	
+	
 </body>
 </html>
