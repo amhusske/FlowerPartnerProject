@@ -77,7 +77,7 @@ public class OrderNavigationServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/edit-order.jsp").forward(request, response);
 				
 			} catch (NumberFormatException e) {
-			getServletContext().getRequestDispatcher("/viewAllOrdersServelet").forward(request, response);
+			getServletContext().getRequestDispatcher("/viewAllOrdersServlet").forward(request, response);
 		}
 		}else if (act.equals("add")) {
 			FlowerHelper daoForFlowers = new FlowerHelper();
