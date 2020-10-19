@@ -46,7 +46,6 @@ public class OrderNavigationServlet extends HttpServlet {
 		}else if (act.equals("delete")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				
 				Order orderToDelete = oh.searchForOrderById(tempId);
 				
 				oh.delete(orderToDelete);
@@ -70,7 +69,7 @@ public class OrderNavigationServlet extends HttpServlet {
 				request.setAttribute("year",orderToEdit.getOrderDate().getYear());
 				
 				FlowerHelper daoForFlowers = new FlowerHelper();
-				request.setAttribute("allPets", daoForFlowers.showAllFlowers());
+				request.setAttribute("allFlowers", daoForFlowers.showAllFlowers());
 				
 				if(daoForFlowers.showAllFlowers().isEmpty()){
 					request.setAttribute("allFlowers", " ");
@@ -81,7 +80,13 @@ public class OrderNavigationServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/viewAllOrdersServelet").forward(request, response);
 		}
 		}else if (act.equals("add")) {
-			getServletContext().getRequestDispatcher("/newOrder.html").forward(request, response);
+			FlowerHelper daoForFlowers = new FlowerHelper();
+			request.setAttribute("allFlowers", daoForFlowers.showAllFlowers());
+			
+			if(daoForFlowers.showAllFlowers().isEmpty()){
+				request.setAttribute("allFlowers", " ");
+			}
+			getServletContext().getRequestDispatcher("/addOrder.jsp").forward(request, response);
 		}
 	}
 }

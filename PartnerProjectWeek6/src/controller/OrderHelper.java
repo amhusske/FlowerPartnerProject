@@ -32,10 +32,14 @@ public class OrderHelper {
 	public void delete(Order toDelete){
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Order> typedQuery= em.createQuery("select O from Orders O where O.ORDER_ID = :selectedOrderID", Order.class);
-		typedQuery.setParameter("selectedDrink", toDelete.getOrderID());
+		TypedQuery<Order> typedQuery= em.createQuery("select O from Order O where O.orderID = :selectedOrderID", Order.class);
+		
+		typedQuery.setParameter("selectedOrderID", toDelete.getOrderID());
+		
 		typedQuery.setMaxResults(1);
+		
 		Order result = typedQuery.getSingleResult();
+		
 		em.remove(result);
 		em.getTransaction().commit();
 		em.close();
@@ -43,13 +47,13 @@ public class OrderHelper {
 	
 
 
-public Order searchForOrderById(int idToEdit) {
-	EntityManager em = emfactory.createEntityManager();
-	em.getTransaction().begin();
-	Order found = em.find(Order.class, idToEdit);
-	em.close();
-	return found;
-}
+	public Order searchForOrderById(int idToEdit) {
+	  EntityManager em = emfactory.createEntityManager();
+	  em.getTransaction().begin();
+	  Order found = em.find(Order.class, idToEdit);
+	  em.close();
+	  return found;
+	}
 
 public void updateItem(Order toEdit) {
 	EntityManager em = emfactory.createEntityManager();
